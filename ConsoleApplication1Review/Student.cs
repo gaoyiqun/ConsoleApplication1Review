@@ -7,6 +7,13 @@ namespace ConsoleApplication1Review
 {
     public class Student
     {
+        // when you do not have a constructor, all the members are initiated too, but to their default values
+        // every type has different default values
+        // int =0;
+        //string is null
+        // class type is null;
+        // bool  default value is False
+
         private int age;
         private string firstName;
 
@@ -21,7 +28,8 @@ namespace ConsoleApplication1Review
             }
             set
             {
-                if (age < 0)
+              
+                if (value < 0)
                 {
                     throw new Exception("Age Should not be less than 0"); //When execute does not throw exceptions...
                 }

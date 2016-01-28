@@ -9,6 +9,14 @@ namespace Lesson05{
 
     class MethodParameters
     {
+
+        public ArrayList AddressList { get; set; }
+
+        public MethodParameters()
+        {
+            AddressList = new ArrayList();
+        }
+
         public static void Main()
         {
 
@@ -18,13 +26,15 @@ namespace Lesson05{
 
             MethodParameters mp = new MethodParameters();
 
+            ArrayList addrArray = new ArrayList(); //Use to save addresses
+           
             do
             {
                 //show menu and get input from user
                 userChoice = mp.getChoice();
 
                 //make a decision based on user's choice
-                mp.makeDecision(userChoice);
+                mp.makeDecision(userChoice, addrArray);
 
                 Console.Write("press Enter key to continue...");
                 Console.ReadLine();
@@ -57,12 +67,11 @@ namespace Lesson05{
 
 
 
-        void makeDecision(string myChoice)
+        void makeDecision(string myChoice, ArrayList addrArray)
         {
             Address addr = new Address();
 
-            ArrayList addrArray = new ArrayList(); //Use to save addresses
-           
+          
             /** The switch statement in makeDecision() calls a method for each case. 
               * These method calls are different from the ones we used in Main().
               * Instead of using the mp reference, they use the this keyword. 
@@ -74,7 +83,9 @@ namespace Lesson05{
             {
                 case "A":
                 case "a":
-                    this.addAddress(ref addr);   //ref?
+                    this.addAddress(ref addr);   //ref is the pointer
+                    this.addAddressV2(addr); // this is the same as ref version, only pointer passed in
+                    AddressList.Add(addr);
                     addrArray.Add(addr);
                     break;
                 case "D":
@@ -111,6 +122,28 @@ namespace Lesson05{
             Console.WriteLine("Please Enter the address for {0}:", addr.name);
             addr.detailaddr = Console.ReadLine();
             Console.WriteLine("Name: {0}, Address: {1} has been added.", addr.name, addr.detailaddr);
+        }
+
+
+        void addAddressV2(Address addr)
+        {
+            Console.WriteLine("Please Enter name you wish to add:");
+            addr.name = Console.ReadLine();
+            Console.WriteLine("Please Enter the address for {0}:", addr.name);
+            addr.detailaddr = Console.ReadLine();
+            Console.WriteLine("Name: {0}, Address: {1} has been added.", addr.name, addr.detailaddr);
+        }
+
+        // this is copy
+        void AddInt(int a)
+        {
+            a = a + 3;
+        }
+
+        void AddIntV2(ref int a)
+        {
+            // this version is different from:  void AddInt(int a)
+            a = a + 3;
         }
 
         void deleteAddress(string name)
