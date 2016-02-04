@@ -20,6 +20,14 @@ namespace ConsoleApplication1Review
         private string firstName;
 
         public string Name { get; set; }
+        public string LastName { get; set; }
+
+        public Student()
+        { 
+        }
+
+        public Student(int age)
+        { }
 
         //proprities: all properties must be public. all properties must have get and set method
         public int Age

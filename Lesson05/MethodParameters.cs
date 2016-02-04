@@ -21,6 +21,9 @@ namespace Lesson05{
          
             ArrayList addrArray = new ArrayList(); //Use to save addresses
 
+            List<Address> typedAddressList = new List<Address>();
+
+
             MethodParameters mp = new MethodParameters();
 
             do
@@ -106,21 +109,84 @@ namespace Lesson05{
 
         void deleteAddress(ArrayList addrArray)
         {
-            Console.WriteLine("Which address you want to delete?");
+            Console.WriteLine("Whoes address you want to delete?");
 
             string del = Console.ReadLine();
 
+          //  addrArray.Remove(del);
+           
+           
+            //foreach (object addr in addrArray)
+            //{
+            //    // type casting
+            //    Address typedAddr = (Address)addr;
+
+            //    if (typedAddr.Name == del)
+            //    {
+            //        addrArray.Remove(typedAddr);
+            //        break;
+            //    }
             
-            foreach (object addr in addrArray)
+            //}
+
+
+             
+        
+            /**
+            List<int> deleteItemsIndex = new List<int>();
+
+            for (int i=0; i>= addrArray.Count-1; i++)
             {
+                 Address typedAddr = (Address)addrArray[i];
+
+                if (typedAddr.Name == del)
+                {
+                    deleteItemsIndex.Add(i);
+                   
+                }
+            }
+            **/
+
+
+/**
                 while (del equals ((Address)addr).name = true)
 
                     do { addrArray.Remove(addr)};
-            }
-
+ **/
+            
+           
             
         }
 
+         void deleteAddressFromTypedList(List<Address> addrArray)
+        {
+            Console.WriteLine("Whoes address you want to delete?");
+
+            string del = Console.ReadLine();
+
+          
+           
+           
+            foreach (Address addr in addrArray)
+            {
+
+                if (addr.Name == del)
+                {
+                    addrArray.Remove(addr);
+                    break;
+                }
+            
+            }
+
+
+             
+      
+            
+           
+            
+        }
+
+    
         void modifyAddress(out Address addr)
         {
             addr = new Address();
@@ -148,6 +214,26 @@ namespace Lesson05{
                 Console.WriteLine("Name: {0}, Address: {1}", ((Address)addr).Name, ((Address)addr).Detailaddr);
             }
             //throw new NotImplementedException();
+        }
+
+
+        void InterfaceDynamicTypingDemo()
+        {
+            List<IMyInterface> myclasses = new List<IMyInterface>();
+         
+            myclasses.Add(new ClassA());
+
+            ClassB cb = new ClassB();
+            cb.Age = 8;
+            myclasses.Add(cb);
+
+            foreach (IMyInterface c in myclasses)
+            {
+                c.Mothod1();
+                int result = c.Mothd2(1, 2);
+            }
+
+
         }
 
     }
