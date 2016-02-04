@@ -8,7 +8,7 @@ namespace ConsoleApplication1Review
     public class Student
     {
         private int age;
-        private string firstName;
+       // private string firstName;
 
         public string Name;
 
@@ -23,10 +23,25 @@ namespace ConsoleApplication1Review
             {
                 if (age < 0)
                 {
-                    throw new Exception("Age Should not be less than 0"); //When execute does not throw exceptions...
+                    throw new Exception(); //When execute does not throw exceptions...
                 }
                 age = value;
             }
         }
+
+        public string LastName { get; set; }
+
+        public Student()
+        {
+            age = 8;
+
+        }
+
+        public Student(int _age)
+        {
+            age = _age;
+        }
+
+
     }
 }

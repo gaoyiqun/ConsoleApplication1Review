@@ -40,8 +40,16 @@ namespace ConsoleApplication1Review
         static void TestStudent()
         {
             Student studentTest = new Student();
+
+            Student studentTest2 = new Student(19);
+
             studentTest.Age = -10;
             Console.WriteLine(studentTest.Age);
+
+            studentTest.LastName = "Gao";
+            Console.WriteLine(studentTest.LastName);
+
+            Console.ReadLine();
         }
     }
 }

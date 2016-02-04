@@ -9,12 +9,17 @@ namespace Lesson05{
 
     class MethodParameters
     {
+
+        public Address addr { get; set; }
+
+
         public static void Main()
         {
 
             string userChoice;
 
-          //  ArrayList addrArray = new ArrayList(); //Use to save addresses
+         
+            ArrayList addrArray = new ArrayList(); //Use to save addresses
 
             MethodParameters mp = new MethodParameters();
 
@@ -24,16 +29,13 @@ namespace Lesson05{
                 userChoice = mp.getChoice();
 
                 //make a decision based on user's choice
-                mp.makeDecision(userChoice);
+                mp.makeDecision(userChoice, addrArray);
 
                 Console.Write("press Enter key to continue...");
                 Console.ReadLine();
                 Console.WriteLine();
             }
             while (userChoice != "Q" && userChoice != "q");
-
-
-
         }
 
         string getChoice()
@@ -57,11 +59,9 @@ namespace Lesson05{
 
 
 
-        void makeDecision(string myChoice)
+        void makeDecision(string myChoice, ArrayList addrArray)
         {
-            Address addr = new Address();
-
-            ArrayList addrArray = new ArrayList(); //Use to save addresses
+            
            
             /** The switch statement in makeDecision() calls a method for each case. 
               * These method calls are different from the ones we used in Main().
@@ -74,19 +74,20 @@ namespace Lesson05{
             {
                 case "A":
                 case "a":
+                    Address addr = new Address();
                     this.addAddress(ref addr);   //ref?
                     addrArray.Add(addr);
                     break;
                 case "D":
                 case "d":
-                    addr.name = "Bojiao";
-                    this.deleteAddress(addr.name);
+                    
+                    this.deleteAddress(addrArray);
                     break;
                 case "M":
                 case "m":
-                    addr.name = "Matt";
-                    this.modifyAddress(out addr);   //out?
-                    Console.WriteLine("Name is modified, now {0}.", addr.name);
+                  //  addr.name = "Matt";
+                   // this.modifyAddress(out addr);   //out?
+                   // Console.WriteLine("Name is modified, now {0}.", addr.name);
                     break;
                 case "V":
                 case "v":
@@ -103,32 +104,21 @@ namespace Lesson05{
 
         }
 
-
-        void addAddress(ref Address addr)
+        void deleteAddress(ArrayList addrArray)
         {
-            Console.WriteLine("Please Enter name you wish to add:");
-            addr.name = Console.ReadLine();
-            Console.WriteLine("Please Enter the address for {0}:", addr.name);
-            addr.detailaddr = Console.ReadLine();
-            Console.WriteLine("Name: {0}, Address: {1} has been added.", addr.name, addr.detailaddr);
-        }
+            Console.WriteLine("Which address you want to delete?");
 
-        void deleteAddress(string name)
-        {
+            string del = Console.ReadLine();
 
-        }
-
-     //   void viewAddress(params string[] names)
-        public void viewAddress(ArrayList addrArray)
-        {
-            foreach (string name in addrArray)
+            foreach (object addr in addrArray)
             {
-                Console.WriteLine("Name: {0}, Address: {1}", ((Address)name).Name, ((Address)name).Detailaddr);
+                while (del equals ((Address)addr).name = true)
+
+                    do { addrArray.Remove(addr)};
             }
-            //throw new NotImplementedException();
+
+            
         }
-
-
 
         void modifyAddress(out Address addr)
         {
@@ -140,11 +130,24 @@ namespace Lesson05{
 
         }
 
- 
+        void addAddress(ref Address addr)
+        {
+            Console.WriteLine("Please Enter name you wish to add:");
+            addr.name = Console.ReadLine();
+            Console.WriteLine("Please Enter the address for {0}:", addr.name);
+            addr.detailaddr = Console.ReadLine();
+            Console.WriteLine("Name: {0}, Address: {1} has been added.", addr.name, addr.detailaddr);
+        }
 
-        /** The addAdress() method takes a ref parameter. 
-          * This means that a reference to the parameter is copied to the method.
-          * This reference still refers to the same object on the heap as the orginal reference used in the caller's argument.*/
-        
+
+        public void viewAddress(ArrayList addrArray)
+        {
+            foreach (object addr in addrArray)
+            {
+                Console.WriteLine("Name: {0}, Address: {1}", ((Address)addr).Name, ((Address)addr).Detailaddr);
+            }
+            //throw new NotImplementedException();
+        }
+
     }
 }
