@@ -20,6 +20,7 @@ namespace ConsoleApplication1Review
 
             Console.ReadLine();
             */
+            PolymnorphismDemo1();
             TestStudent();
             Console.ReadLine();
         }
@@ -39,6 +40,9 @@ namespace ConsoleApplication1Review
 
         static void TestStudent()
         {
+            // here is an example of calling static
+            Student.ConvertStudentName("myname");
+
             Student studentTest = new Student();
 
             Student studentTest2 = new Student(19);
@@ -50,6 +54,19 @@ namespace ConsoleApplication1Review
             Console.WriteLine(studentTest.LastName);
 
             Console.ReadLine();
+        }
+
+        static void PolymnorphismDemo1()
+        {
+            List<Animal> animalList = new List<Animal>();
+
+            animalList.Add(new Duck());
+            animalList.Add(new Donkey());
+
+            foreach (Animal animal in animalList)
+            {
+                animal.Walk();
+            }
         }
     }
 }

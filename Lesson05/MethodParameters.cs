@@ -110,6 +110,7 @@ namespace Lesson05{
 
             string del = Console.ReadLine();
 
+            
             foreach (object addr in addrArray)
             {
                 while (del equals ((Address)addr).name = true)
