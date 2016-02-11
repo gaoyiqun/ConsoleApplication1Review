@@ -91,9 +91,21 @@ namespace LectureReview3
 
             string mod = Console.ReadLine();
 
+            // convert it to integer
+          //  int userInput = -1;
+
+          //  var userInputIsRight = Int32.TryParse(mod, out userInput);
+
+            Address userSeletedAddress = null;
+            // to find the user interested address
             for (int i = 0; i < addressList.Count; i++)
             {
-
+                if (addressList[i].Name == mod)
+                {
+                    userSeletedAddress = addressList[i];
+                    break;
+                }
+                /**
                 do
                 {
                     Console.WriteLine("Input the new address for {0}", addressList[i].name);
@@ -102,7 +114,19 @@ namespace LectureReview3
                     break;
                 } while (mod == addressList[i].name);
                 break;
-            
+                **/
+            }
+
+            if (userSeletedAddress != null)
+            {
+                Console.WriteLine("Input the new address for {0}", userSeletedAddress.Name);
+                userSeletedAddress.AddrDetail = Console.ReadLine();
+                Console.WriteLine("{0}'s address is modified, now .", userSeletedAddress.Name);
+            }
+            else
+            {
+                // recursive 
+                modifyAddress(addressList);
             }
             /**
             foreach (Address addr in addressList)
