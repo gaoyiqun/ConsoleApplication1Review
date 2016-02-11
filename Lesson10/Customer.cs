@@ -4,19 +4,24 @@
     {
         private int m_id = -1;    //*******
 
+        private string m_name = string.Empty;
+
+        public Customer(int id, string name)
+        {
+            m_id = id;
+            m_name = name;
+        }
+
         public int ID
         {
             get
             {
                 return m_id;
             }
-            set
-            {
-                m_id = value;
-            }
+           
         }
 
-        private string m_name = string.Empty;
+        
 
         public string Name
         {
@@ -24,10 +29,7 @@
             {
                 return m_name;
             }
-            set
-            {
-                m_name = value;
-            }
+   
         }
 
       

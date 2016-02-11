@@ -19,16 +19,32 @@ using System.Text;
 namespace Lesson10
 {
 
-    public class CustomerManagerWithAccessorMethods
+    public class Properties
+    {
+        public static void ReadOnly()
+        {
+            Customer cust = new Customer(1, "Amelio Rosales");
+
+            Console.WriteLine("ID:{0}, Name:{1}", cust.ID, cust.Name);
+
+            Console.ReadKey();
+        }
+    }
+
+
+    public class WriteOnlyProperties
+
     {
         public static void Main(string[] args)
         {
-            Customer cust = new Customer();
+            CustomerWOnly cust = new CustomerWOnly();
 
-            cust.SetID(1);
-            cust.SetName("Amelo Rosles");
+            cust.ID = 1;
+            cust.Name = "Ame Rosles";
 
-            Console.WriteLine("ID:{0}, Name:{1}", cust.GetID(), cust.GetName());
+            cust.DisplayCustomerData();
+
+        
 
             Console.ReadKey();
         }
