@@ -22,8 +22,11 @@ namespace ConsoleApplication1Review
         public string Name { get; set; }
         public string LastName { get; set; }
 
+        public Gender Sex { get; set; }
+
         public Student()
-        { 
+        {
+            Sex = Gender.Male;
         }
 
         public Student(int age)
